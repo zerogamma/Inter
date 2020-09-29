@@ -19,12 +19,28 @@ const filterTitle = (data, filter) => {
 
 const fitlerCompany = (data, filter) => {
   if (filter.co === undefined) return data;
-  return data.filter((search) => search.companies.includes(filter.co));
+  const filters = filter.co.split(",");
+  return data.filter((search) => {
+    let check = true;
+    filters.forEach((filt) => {
+      if (check === false) return false;
+      return (check = search.companies.includes(filt));
+    });
+    return check;
+  });
 };
 
 const fitlerPosition = (data, filter) => {
   if (filter.pos === undefined) return data;
-  return data.filter((search) => search.positions.includes(filter.pos));
+  const filters = filter.pos.split(",");
+  return data.filter((search) => {
+    let check = true;
+    filters.forEach((filt) => {
+      if (check === false) return false;
+      return (check = search.positions.includes(filt));
+    });
+    return check;
+  });
 };
 
 export const filterData = (data, filter) => {

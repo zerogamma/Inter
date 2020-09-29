@@ -24,7 +24,7 @@ const SearchComponent = (props) => {
   return (
     <div>
       <div className="lineSeparator" />
-      <p className="title">questions</p>
+      <p className="title move-2">questions</p>
       <div className="filterGroup">
         <FilterComponent className="filterContainer" filter={getFilterQuery} />
         <input
