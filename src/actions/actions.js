@@ -15,9 +15,4 @@ const fetchData = () => {
   };
 };
 
-export const filterData = (data) => ({
-  type: "FILTER",
-  payload: { data }
-});
-
 export default fetchData;

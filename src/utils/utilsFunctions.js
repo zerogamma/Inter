@@ -12,17 +12,24 @@ export const getQueryStringParams = (query) => {
     : {};
 };
 
-export const filterTitle = (data, filter) => {
+const filterTitle = (data, filter) => {
   if (filter.q === undefined) return data;
   return data.filter((search) => search.title.includes(filter.q));
 };
 
-export const fitlerCompany = (data, filter) => {
+const fitlerCompany = (data, filter) => {
   if (filter.co === undefined) return data;
   return data.filter((search) => search.companies.includes(filter.co));
 };
 
-export const fitlerPosition = (data, filter) => {
+const fitlerPosition = (data, filter) => {
   if (filter.pos === undefined) return data;
   return data.filter((search) => search.positions.includes(filter.pos));
+};
+
+export const filterData = (data, filter) => {
+  let newData = filterTitle(data, filter);
+  newData = fitlerCompany(newData, filter);
+  newData = fitlerPosition(newData, filter);
+  return newData;
 };
